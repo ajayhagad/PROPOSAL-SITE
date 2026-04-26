@@ -33,7 +33,39 @@ export default function App() {
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "20px", position: "relative", minHeight: "100vh" }}>
+    <div style={{ 
+      textAlign: "center", 
+      padding: "20px", 
+      position: "relative", 
+      minHeight: "100vh",
+      background: "linear-gradient(to bottom right, #ffc0cb, #ffe4e1)",
+      overflow: "hidden"
+    }}>
+
+      {/* Floating Hearts */}
+      {[...Array(20)].map((_, i) => (
+        <div
+          key={i}
+          style={{
+            position: "absolute",
+            top: Math.random() * 100 + "%",
+            left: Math.random() * 100 + "%",
+            fontSize: "20px",
+            animation: `float ${3 + Math.random() * 4}s infinite`,
+          }}
+        >
+          ❤️
+        </div>
+      ))}
+
+      <style>{`
+        @keyframes float {
+          0% { transform: translateY(0); opacity: 1; }
+          50% { transform: translateY(-20px); }
+          100% { transform: translateY(0); opacity: 1; }
+        }
+      `}</style>
+
       <audio ref={audioRef} loop>
         <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" />
       </audio>
